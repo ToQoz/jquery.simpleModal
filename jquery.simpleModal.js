@@ -13,7 +13,7 @@
       width: $modalWindow.width(),
       height: $modalWindow.height(),
       position: 'absolute',
-      bottom: '0px',
+      top: +$(window).height(),
       left: '50%',
       'background-color': '#CCCCCC',
       'z-index': 11
@@ -40,9 +40,10 @@
   }
   // Internal
   function showModal($target) {
-    var movable = +$(window).height() - 200,
+    var movable = +$(window).height(),
         marginTop = 20,
-        move = movable - marginTop;
+        move = movable - marginTop
+    $target.css({ top: movable + 'px' })
     $target.show(0, function() {
       $target.css({
         '-moz-transition': 'all 0.5s',
@@ -52,13 +53,13 @@
         '-webkit-transform': 'translateY('+ -move +'px)',
         'transform': 'translateY('+ -move +'px)'
       })
-    });
+    })
   }
   function hideModal($target) {
     $target.hide(0, function() {
-      $target.css('-moz-transform', '')
-      $target.css('-webkit-transform', '')
-      $target.css('transform', '')
+      $target.css('-moz-transform', 'translateY(0px)')
+      $target.css('-webkit-transform', 'translateY(0px)')
+      $target.css('transform', 'translateY(0px)')
     });
     
   }
