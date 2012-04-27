@@ -13,7 +13,7 @@
       width: $modalWindow.width(),
       height: $modalWindow.height(),
       position: 'absolute',
-      top: +$(window).height(),
+      top: +$(window).height() - 200,
       left: '50%',
       'background-color': '#CCCCCC',
       'z-index': 11
@@ -40,7 +40,7 @@
   }
   // Internal
   function showModal($target) {
-    var movable = +$(window).height(),
+    var movable = +$(window).height() - 200,
         marginTop = 20,
         move = movable - marginTop
     $target.css({ top: movable + 'px' })
